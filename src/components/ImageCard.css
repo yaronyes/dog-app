@@ -3,5 +3,6 @@
 }
 
 .modal-dialog {
-    max-width: 35%;
+    min-width: auto;
+    max-width: fit-content;
 }

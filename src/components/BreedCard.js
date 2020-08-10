@@ -17,8 +17,8 @@ const BreedsCard = props => {
     
     useEffect(() => {
         loadRandomImage(breed);        
-    }, [enforceRandomImage]);
-    
+    }, [breed, enforceRandomImage]);
+       
     const loadRandomImage = async breed => {
         try {
             const result = await getRandomImageByBreed(breed);
