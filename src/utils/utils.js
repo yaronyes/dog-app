@@ -17,3 +17,12 @@ export const getRandomImageByBreed = async breed => {
         return {};
     }
 }
+
+export const getBreedImages = async breed => {
+    try {
+        return await axios.get(`https://dog.ceo/api/breed/${breed}/images`);
+    } catch (e) {
+        console.log(e);
+        return {};
+    }
+}

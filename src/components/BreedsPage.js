@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './BreedsPage.css';
 import { getDogBreeds } from '../utils/utils';
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import BreedCard from './BreedCard';
 
 const BreedsPage = props => {
@@ -44,20 +44,11 @@ const BreedsPage = props => {
         <div className="breeds-page"> 
             <Container>
                 <Row className="search-row justify-content-between w-100">
-                    <Col className="search-col" lg={4} sm={6}>
-                        {/* <Form inline className="w-100"> */}
-                            {/* <Form.Group>
-                                <Form.Label>Search</Form.Label>
-                                <Form.Control type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)} className="w-100"/>                          
-                            </Form.Group>                              */}
+                    <Col className="search-col" lg={4} sm={6}>                                   
                             <label htmlFor="search">Search</label>    
                             <input id="search" type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
-                        {/* </Form> */}
                     </Col>
-                    <Col className="update-col" lg={2} sm={6}>
-                        {/* <Form inline className="w-100">
-                             
-                        </Form>     */}
+                    <Col className="update-col" lg={2} sm={6}>                        
                         <button type="button" onClick={generateRandomNumber}>Update Images</button>
                     </Col>             
                 </Row>
