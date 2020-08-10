@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './BreedCard.css';
-import { Card } from 'react-bootstrap';
+import { Card, Image, Col } from 'react-bootstrap';
 import { getRandomImageByBreed } from '../utils/utils';
 
 const BreedsCard = props => {
     const { breed, enforceRandomImage } = props;
-    const [image, setImage] = useState("https://www.austinpetsalive.org/assets/placeholder/dog-placeholder-tall.svg");
+    const [image, setImage] = useState("https://previews.123rf.com/images/damedeeso/damedeeso1210/damedeeso121000006/15551999-placeholder-banner-dog.jpg");
     
     useEffect(() => {
         loadRandomImage(breed);
@@ -14,7 +14,7 @@ const BreedsCard = props => {
     const loadRandomImage = async breed => {
         try {
             const result = await getRandomImageByBreed(breed);
-            return result.data.message;
+            setImage(result.data.message);
         } catch (e) {
             console.log(e)
             return "";
@@ -25,10 +25,9 @@ const BreedsCard = props => {
         <div className="dog-card">
             <Card>
             <Card.Body>
-                <Card.Title>{breed}</Card.Title>    
-                <Card.Text>
-                    {enforceRandomImage}
-                </Card.Text>
+                <Card.Title>{breed}</Card.Title>                   
+                <Image src={image} thumbnail={true} className="dog-image" />
+
             </Card.Body>  
             </Card>
         </div>
