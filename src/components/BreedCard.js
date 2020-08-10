@@ -4,7 +4,7 @@ import { Card, Image } from 'react-bootstrap';
 import { getRandomImageByBreed } from '../utils/utils';
 import { useHistory } from "react-router-dom";
 
-// Component foe drawing breed name and random image
+// Component for drawing card with breed name and random image
 // Props:
 // breed - string - the breed name to display
 // enforceRandomImage = number - random number to trigger render in order to load new image

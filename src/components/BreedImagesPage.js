@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './BreedImagesPage.css';
 import { useParams } from 'react-router-dom';
 import { getBreedImages } from '../utils/utils'
+import { Container } from 'react-bootstrap';
 
 const BreedImagesPage = props => {
     const { breedName } = useParams();
@@ -21,8 +22,10 @@ const BreedImagesPage = props => {
     };
 
     return (
-        <div>
-            {imageUrlList}
+        <div className='breed-img-page'>
+            <Container>
+                {imageUrlList}
+            </Container>            
         </div>
     );
 }
