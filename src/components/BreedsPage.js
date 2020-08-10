@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './BreedsPage.css';
 import { getDogBreeds } from '../utils/utils';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import BreedCard from './BreedCard';
 
 const BreedsPage = props => {
     const { hideHeaderNavbar } = props;
+    const [breeds, setBreeds] = useState([]);
+    const [enforceRandomImage, setEnforceRandomImage] = useState(0);
+    const [searchValue, setSearchValue] = useState("");
  
     useEffect(() => {
         hideHeaderNavbar(false);
@@ -13,15 +18,53 @@ const BreedsPage = props => {
         loadData();
     }, []);
 
-    const loadData = async () => {
-        const result = await getDogBreeds();
-        const breeds = Object.keys(result.data.message);
-        console.log(breeds)
+    const loadData = async () => {        
+        try {
+            const result = await getDogBreeds();
+            const keys = Object.keys(result.data.message);
+            setBreeds(keys);            
+        } catch (e) {
+            console.log(e)
+        }                
     };
+
+    const generateRandomNumber = () => {
+        let randomNumber = Math.floor(Math.random() * 1101);
+        while(randomNumber === enforceRandomImage) {
+            randomNumber = Math.floor(Math.random() * 1101);
+        }
+
+        setEnforceRandomImage(randomNumber);
+    }
+    
+    const filter = breeds.filter(breed => breed.toLowerCase().includes(searchValue.toLowerCase().trim()));
+    const displayBreeds = filter.map((breed, i) => <Col key={i} lg={3} md={4} sm={6} className="breed-col"><BreedCard breed={breed} enforceRandomImage={enforceRandomImage}/></Col>);
 
     return (
         <div className="breeds-page"> 
-            BreedsPage
+            <Container>
+                <Row className="search-row justify-content-between w-100">
+                    <Col className="search-col" lg={4} sm={6}>
+                        {/* <Form inline className="w-100"> */}
+                            {/* <Form.Group>
+                                <Form.Label>Search</Form.Label>
+                                <Form.Control type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)} className="w-100"/>                          
+                            </Form.Group>                              */}
+                            <label htmlFor="search">Search</label>    
+                            <input id="search" type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
+                        {/* </Form> */}
+                    </Col>
+                    <Col className="update-col" lg={2} sm={6}>
+                        {/* <Form inline className="w-100">
+                             
+                        </Form>     */}
+                        <button type="button" onClick={generateRandomNumber}>Update Images</button>
+                    </Col>             
+                </Row>
+                <Row>
+                    {displayBreeds}
+                </Row>
+            </Container>                        
         </div>
     );
 }

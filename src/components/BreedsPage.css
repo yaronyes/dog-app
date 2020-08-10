@@ -1,0 +1,17 @@
+.breed-col {
+    margin: 10px 0;
+}
+
+.breeds-page .search-row {
+    margin: 10px 0 0 0;
+}
+
+.breeds-page .search-col {
+    padding: 0;
+    text-align: left;
+}
+
+.breeds-page .update-col {
+    padding: 0;
+    text-align: right;
+}
