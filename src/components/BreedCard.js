@@ -16,7 +16,7 @@ const BreedsCard = props => {
     const history = useHistory();
     
     useEffect(() => {
-        loadRandomImage(breed);
+        loadRandomImage(breed);        
     }, [enforceRandomImage]);
     
     const loadRandomImage = async breed => {
@@ -36,7 +36,7 @@ const BreedsCard = props => {
                 <Card.Title>{breed}</Card.Title>                   
                 <Image src={image} thumbnail={true} className="dog-image" />
             </Card.Body>  
-            </Card>
+            </Card>                        
         </div>
     )
 }
