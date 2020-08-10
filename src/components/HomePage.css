@@ -1,0 +1,11 @@
+.homepage {
+    text-align: left;
+}
+
+.homepage h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+.homepage .j-description {
+    color: lightslategray;
+}
