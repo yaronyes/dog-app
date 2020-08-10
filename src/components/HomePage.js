@@ -22,7 +22,7 @@ const HomePage = props => {
                 </p>
             </Jumbotron>
         </div>
-    )
+    );
 }
 
 export default HomePage;

@@ -4,6 +4,7 @@ import './App.css';
 import HeaderNav from './components/HeaderNav';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
+import BreedsPage from './components/BreedsPage';
 
 function App() {
   const [hideNavbar, setHideNavbar] = useState(false);
@@ -21,7 +22,7 @@ function App() {
             <HomePage hideHeaderNavbar={hideHeaderNavbar}/>
           </Route>
           <Route exact path="/breeds">
-
+            <BreedsPage hideHeaderNavbar={hideHeaderNavbar}/>
           </Route>
           <Route exact path="/breeds/:breedName">
 
