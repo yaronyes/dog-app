@@ -12,11 +12,16 @@ import { useHistory } from "react-router-dom";
 // image - string - the url for the image
 const BreedsCard = props => {
     const { breed, enforceRandomImage } = props;
-    const [image, setImage] = useState("https://previews.123rf.com/images/damedeeso/damedeeso1210/damedeeso121000006/15551999-placeholder-banner-dog.jpg");
+    const placeholder = "https://previews.123rf.com/images/damedeeso/damedeeso1210/damedeeso121000006/15551999-placeholder-banner-dog.jpg"
+    const [image, setImage] = useState(placeholder);
     const history = useHistory();
     
     useEffect(() => {
-        loadRandomImage(breed);        
+        loadRandomImage(breed); 
+        
+        return () => {
+            setImage(placeholder);
+        }
     }, [breed, enforceRandomImage]);
        
     const loadRandomImage = async breed => {
